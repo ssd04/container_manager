@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}First Page{% endblock %}
+
+{% block head %}
+  {{ super() }} <!-- without super function block content will not be inherited from layout.html -->
+{% endblock %}
+
+{% block jumbotron %}
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome to Container Manager Application</h1>
+</div>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}

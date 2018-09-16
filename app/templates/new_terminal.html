@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}Profile Page{% endblock %}
+
+{% block head %}
+  {{ super() }} <!-- without super function block content will not be inherited from layout.html -->
+	<link href="{{ url_for('static', filename='xterm/dist/xterm.css') }}" rel="stylesheet">
+	<script type="text/javascript" src="{{ url_for('static', filename='xterm/dist/xterm.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='xterm/dist/addons/terminado/terminado.js') }}"></script>
+{% endblock %}
+
+{% block jumbotron %}
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div id="terminal-container">
+  </div>>
+  <script>
+      terminado.apply(Terminal);
+
+      var term = new Terminal(),
+          protocol = (location.protocol === 'https:') ? 'wss://' : 'ws://',
+          socketURL = protocol + location.hostname + ((location.port) ? (':' + location.port) : '') + "/websocket";
+          sock = new WebSocket(socketURL);
+
+      sock.addEventListener('open', function () {
+        term.terminadoAttach(sock);
+      });
+
+      term.open(document.getElementById('terminal-container'));
+    </script>
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}

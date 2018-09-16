@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block title %}Logged in{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block jumbotron %}
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block rightnav %}
+    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+
+    {% if session['logged_in'] %}
+
+        {% if username %}
+            <h1>Hello {{ username }}</h1>
+        {% else %}
+            <h1>No username</h1>
+        {% endif %}
+
+    {% else %}
+        <h1>Please log in</h1>
+    {% endif %}
+
+
+{% endblock %}
+
+{% block footer %}
+    <footer class="container-fluid">
+      <p>Footer Text</p>
+    </footer>
+{% endblock %}

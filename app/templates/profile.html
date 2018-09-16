@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block title %}Profile Page{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block jumbotron %}
+{% endblock %}
+
+{% block navbar %}
+    {{ super() }}
+{% endblock %}
+
+{% block rightnav %}
+    {% if session['logged_in'] %}
+    <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>  Logout</a></li>
+    {% else %}
+        {{ super() }}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {{ super() }}
+
+    {% if session['logged_in'] %}
+
+        {% if session['current_username'] %}
+            <h1>Hello {{ session['current_username'] }}!!!!!</h1>
+
+            <div class="container">
+                <form action="createContainer" method='POST' id="createContForm">
+                    <div class="form-group">
+                    <label for="create_c">Create Container:</label>
+                    <input type="text" class="form-control" id="cont_name" name="cont_name" placeholder="Enter container name">
+                    </div>
+                    <button type="submit" class="btn btn-default">Create</button>
+                    {% if error %}
+                    <h4>Error: {{ error }}</h4>
+                    {% endif %}
+                </form>
+                <p id="cont_id">{{ container_id }}</p>
+            </div>
+
+            <div class="container">
+                <a href="/start-xterm">Start Xterm.js server</a>
+            </div>
+
+            <div class="container">
+                <a href="/console" onclick="javascript:openWindow(this.href);return false;">Open Console</a>
+            </div>
+        {% else %}
+            <h1>No username</h1>
+        {% endif %}
+
+    {% else %}
+        <h1>Please log in</h1>
+    {% endif %}
+
+{% endblock %}
+
+{% block footer %}
+    {{ super() }}
+{% endblock %}
