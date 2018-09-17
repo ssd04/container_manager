@@ -64,9 +64,9 @@ class Container:
         except docker.errors.APIError as e:
             print(e)
 
-    def search_image(self, image):
+    def search_image(self, image_name):
         ''' Search docker image by pattern. Return image name. '''
-        images = self.client.images.search(image)
+        images = self.client.images.search(image_name)
         for image in images:
             if image['is_official'] == True:
                 return image['name']

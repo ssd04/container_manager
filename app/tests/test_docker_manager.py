@@ -1,4 +1,6 @@
-from docker_manager import Container
+import sys
+sys.path.append('/home/darius/python/container_manager/')
+from app.docker.docker_manager import Container
 
 class ContainerTest():
 
@@ -30,7 +32,7 @@ class ContainerTest():
 if __name__ == '__main__':
     test = ContainerTest()
     test.check_docker_service()
-    test.search_docker_image()
-    test.pull_image()
+    #test.search_docker_image()
+    #test.pull_image()
+    #test.create_container()
     test.remove_container()
-    test.create_container()

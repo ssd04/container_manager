@@ -1,2 +1,6 @@
 venv/
 __pycache__/
+output_docker.txt
+env/
+project.info
+app/config.py

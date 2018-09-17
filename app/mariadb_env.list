@@ -1,0 +1,4 @@
+MYSQL_ROOT_PASSWORD='dariussarbu'
+MYSQL_DATABASE='container_manager'
+MYSQL_USER='darius'
+MYSQL_PASSWORD='dariussarbu'
